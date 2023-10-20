@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "gg.flyte"
-version = "1.0.1"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -17,16 +17,6 @@ dependencies {
         exclude(module = "opus-java")
     }
     implementation("gg.flyte:discordgenerator:1.0.4")
-}
-
-tasks {
-    build {
-        dependsOn(shadowJar)
-    }
-
-    compileJava {
-        options.release.set(17)
-    }
 }
 
 publishing {
