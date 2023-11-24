@@ -17,10 +17,16 @@ data class GeneratedExport(
 }
 
 object JDAGenerator {
-    fun exportTextChannel(channel: TextChannel, title: String = "Export of #${channel.name}", reversed: Boolean = false): GeneratedExport {
+    fun exportTextChannel(
+        channel: TextChannel,
+        title: String = "Export of #${channel.name}",
+        date: String? = null,
+        reversed: Boolean = false
+    ): GeneratedExport {
         DiscordGenerator {
             this.title = title
             this.reversed = reversed
+            if (date != null) this.date = date
             addMessages(
                 MessageHistory.getHistoryFromBeginning(channel).complete().retrievedHistory.asGeneratorComponent()
             )

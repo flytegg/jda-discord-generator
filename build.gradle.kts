@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "gg.flyte"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -16,7 +16,7 @@ dependencies {
     implementation("net.dv8tion:JDA:5.0.0-beta.15") {
         exclude(module = "opus-java")
     }
-    implementation("gg.flyte:discordgenerator:1.0.4")
+    implementation("gg.flyte:discordgenerator:1.0.5")
 }
 
 publishing {
