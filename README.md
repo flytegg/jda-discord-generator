@@ -47,7 +47,7 @@ fun main() {
         .awaitReady()
 
     val channel = jda.getTextChannelById(TEXT_CHANNEL_ID)!!
-    val generatedOutput = JDAGenerator.exportTextChannel(channel, date = "AAAAAA", reversed = true)
+    val generatedOutput = JDAGenerator.exportTextChannel(channel, title = "Export of #${channel.name}", date = "AAAAAA", reversed = true)
     generatedOutput.saveToFile(Path.of("output.html"))
 }
 ```
@@ -64,7 +64,7 @@ public static void main(String[] args) {
         .awaitReady();
 
     TextChannel channel = jda.getTextChannelById(TEXT_CHANNEL_ID);
-    GeneratedExport generatedOutput = JDAGenerator.exportTextChannel(channel, null, "AAAAAA", true);
+    GeneratedExport generatedOutput = JDAGenerator.exportTextChannel(channel, "Export of #" + channel.getName(), "AAAAAA", true);
     generatedOutput.saveToFile(Path.of("output.html"));
 }
 ```
