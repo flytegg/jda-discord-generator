@@ -28,13 +28,22 @@ object JDAGenerator {
             this.reversed = reversed
             if (date != null) this.date = date
             addMessages(
-                MessageHistory.getHistoryFromBeginning(channel).complete().retrievedHistory.asGeneratorComponent()
+                channel.retrieveCompleteMessageHistory().asGeneratorComponent()
             )
         }.generate().apply {
             return GeneratedExport(this)
         }
     }
 }
+
+fun TextChannel.retrieveCompleteMessageHistory(
+    messageId: String? = null,
+    previousMessages: MutableSet<Message> = mutableSetOf()
+): MutableSet<Message> =
+    with((if (messageId == null) getHistoryFromBeginning(100) else getHistoryAfter(messageId, 100)).complete().retrievedHistory.toMutableSet()) {
+        previousMessages.addAll(this)
+        if (size == 100) retrieveCompleteMessageHistory(last().id, previousMessages.reversed().toMutableSet()) else previousMessages
+    }
 
 fun Message.asGeneratorComponent() = Component.Message(
     author = author.asGeneratorComponent(),
@@ -46,7 +55,7 @@ fun Message.asGeneratorComponent() = Component.Message(
 )
 
 @JvmName("messagesAsGeneratorComponent")
-fun List<Message>.asGeneratorComponent() = map { it.asGeneratorComponent() }.toList()
+fun Set<Message>.asGeneratorComponent() = map { it.asGeneratorComponent() }.toList()
 
 fun User.asGeneratorComponent() = Component.Author(
     imageUrl = effectiveAvatarUrl,
