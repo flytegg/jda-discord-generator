@@ -6,7 +6,7 @@ Gradle (Kotlin DSL)
 ```kotlin
 maven("https://repo.flyte.gg/releases")
 
-implementation("gg.flyte:discordgenerator-jda:1.0.1")
+implementation("gg.flyte:discordgenerator-jda:1.1.1")
 ```
 
 Gradle (Groovy DSL)
@@ -15,7 +15,7 @@ maven {
     url "https://repo.flyte.gg/releases"
 }
 
-implementation "gg.flyte:discordgenerator-jda:1.0.1"
+implementation "gg.flyte:discordgenerator-jda:1.1.1"
 ```
 
 Maven
@@ -29,7 +29,7 @@ Maven
 <dependency>
   <groupId>gg.flyte</groupId>
   <artifactId>discordgenerator-jda</artifactId>
-  <version>1.0.1</version>
+  <version>1.1.1</version>
 </dependency>
 ```
 
